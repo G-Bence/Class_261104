@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <%= title %>
     </title>
     <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
-    <h1><%= title %></h1>
-    Hello EJS!
+    <h1>
+        Enter your username
+    </h1>
+    <form method="POST">
+    <label for="username">User Name:</label><br>
+    <input type="text" id="username" name="username" pattern="^[a-z][a-z\d_]*$"><br> <!--  This is also working -->
+    <label for="nickname">Nickname:</label><br>
+    <input type="text" id="nickname" name="nickname" pattern="^[a-zA-Z\d_\-\s]{3,}$"><br>
+    <label for="profilePic">Profile Picture:</label><br>
+    <input type="url" id="profilePic" name="profilePic" pattern="^https?://+[a-zA-Z0-9\-\.]+\.[.jpg|.png]{1,}$"><br>
+    <label for="background">Background Color:</label><br>
+    <input type="url" id="background" name="background" pattern="#[a-fA-F0-9]{6}$"><br>
+
+    <% if (locals.error) { %>
+    <p>
+        <%= locals.error %>
+    </p>
+    <% } %>
+
+
+    <button type="submit">Submit</button>
+    </form>
+
+
 </body>
+
 </html>
